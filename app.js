@@ -17,7 +17,7 @@ google.maps.event.addListener(ft, "click", function(e){
   }
 
   // enable adopt button
-  document.getElementById("adoptme").className = "btn btn-success";
+  document.getElementById("adoptme").className = "btn btn-success greenovate-green";
   document.getElementById("adoptme").disabled = "";
   document.getElementById("adoptme").onclick = function(){
     var id = e.row["TIS #/ SOURCE"].value;

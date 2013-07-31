@@ -31,3 +31,55 @@ body{
 .logo{
   max-width:180px;
 }
+
+.greenovate-green{
+  background: rgb( 163, 212, 0 );
+}
+.greenovate-cyan{
+  background:  rgb( 77, 158, 235 );
+  /* rgb( 70, 235, 145 ); */
+}
+.greenovate-orange{
+  background: rgb( 255, 99, 8 );
+  color: #fff;
+}
+.greenovate-yellow{
+  background: rgb( 255, 209, 0 );
+}
+
+a{
+  color: rgb( 77, 158, 235 );
+}
+
+.btn-success .greenovate-green{
+  color: #ffffff;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+  background-color: rgb( 163, 212, 0 );
+  *background-color: rgb( 153, 192, 0 );
+  background-image: -moz-linear-gradient(top, #62c462, rgb( 153, 192, 0 ));
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(rgb( 153, 192, 0 )));
+  background-image: -webkit-linear-gradient(top, #62c462, rgb( 153, 192, 0 ));
+  background-image: -o-linear-gradient(top, #62c462, rgb( 153, 192, 0 ));
+  background-image: linear-gradient(to bottom, #62c462, rgb( 153, 192, 0 ));
+  background-repeat: repeat-x;
+  border-color: #51a351 rgb( 153, 192, 0 ) #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff99c000', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.btn .greenovate-green:hover,
+.btn .greenovate-green:focus,
+.btn .greenovate-green:active,
+.btn .greenovate-green.active,
+.btn .greenovate-green.disabled,
+.btn .greenovate-green[disabled] {
+  color: #ffffff;
+  background-color: #99c000;
+  *background-color: #99c000;
+}
+
+.btn .greenovate-green:active,
+.btn .greenovate-green.active {
+  background-color: #99c000 \9;
+}

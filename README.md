@@ -2,7 +2,7 @@
 
 An app to learn how to care for young trees in your neighborhood.
 
-<img src="https://raw.github.com/CityOfBoston/adopt-trees/master/screenshot.png"/>
+<img src="https://raw.github.com/CityOfBoston/adopt-trees/gh-pages/screenshot.png"/>
 
 # Technologies used
 

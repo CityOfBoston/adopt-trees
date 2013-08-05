@@ -20,7 +20,7 @@ body{
   position: absolute;
   left: 60px;
   top: 10px;
-  z-index: 999;
+  z-index: 99;
 }
 #searchbar > .btn{
   margin-bottom: 11px;
@@ -96,6 +96,7 @@ a{
   background-color: #fff;
   padding: 10px;
   border: 2px solid #000;
+  z-index: 999;
 }
 
 .form-container button{

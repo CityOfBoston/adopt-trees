@@ -176,8 +176,14 @@ function adoptWindow(){
   TINY.box.show({html: document.getElementById("adoptformtemp").innerHTML ,animate:true,close:true,boxid:'adoptform',top:5});
   setTimeout(function(){
     for(var i=0;i<document.getElementsByClassName("treeaddress").length;i++){
-      document.getElementsByClassName("treeaddress")[i].value = treeaddress;
-      document.getElementsByClassName("treetype")[i].value = treetype;
+      if(typeof document.getElementsByClassName("treeaddress")[i].value != "undefined"){
+        document.getElementsByClassName("treeaddress")[i].value = treeaddress;
+        document.getElementsByClassName("treetype")[i].value = treetype;
+      }
+      else{
+        document.getElementsByClassName("treeaddress")[i].innerHTML = treeaddress;
+        document.getElementsByClassName("treetype")[i].innerHTML = treetype;
+      }
     }
   }, 500);
 }
@@ -185,5 +191,10 @@ function cancelWindow(){
   TINY.box.hide();
 }
 function makeAdopt(){
-
+  if(document.getElementsByClassName("commit")[1].checked && document.getElementsByClassName("disclaimer")[1].checked){
+    document.getElementsByTagName("form")[1].submit();
+  }
+  else{
+    alert("Please approve your commitment and the city's disclaimer before adopting.");
+  }
 }

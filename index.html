@@ -34,7 +34,7 @@
           <p>By helping to water and care for a young street tree, you can help establish a healthy tree canopy on your street. Some quick tips are listed below, but be sure to download the tree care guide for more detailed advice.</p>
           <p><em>Water Weekly</em> – Newly planted trees should be watered from May to October. They need 10 gallons once a week and twice as much in hot months like July and August.</p>
           <p><em>Tree Pit Care</em> – Tree pits need to be cleared of trash, the top three inches of soil should be loosened, mulch will help keep the tree roots moist, and a border will help to protect them.</p>
-          <p><em>Helpful Tools</em> – Shovel, soil cultivator, gardening gloves, hose or watering can (THIS CAN carries 6 gallons and has a spout to pour in the treegator).</p>
+          <p><em>Helpful Tools</em> – Shovel, soil cultivator, gardening gloves, hose or watering can (<a href="http://www.truevalue.com/product/Water-Container-Blue-6-Gal/40925.uts#activeTab1" target="_blank">THIS CAN</a> carries 6 gallons and has a spout to pour in the treegator).</p>
           <p><em>Workshops</em> – Tree care workshops will be offered in the spring and fall through the <a href="http://www.bostonnatural.org/trees_and_orchards.htm" target="_blank">Boston Natural Areas Network</a>.</p>
           <!--
           <a href="#" class="btn btn-success greenovate-green">Full Tree Care Guide</a>
@@ -109,7 +109,7 @@
     </div>
     <div id="adoptformtemp">
       <div class="form-container">
-        <form class="form-horizontal" action="/adopt" method="POST">
+        <form class="form-horizontal" action="http://adoptatree.herokuapp.com/add.php" method="POST">
           <h4>Your Information</h3>
           <div class="control-group">
             <label class="control-label">Your Name</label>
@@ -133,21 +133,23 @@
           <div class="control-group">
             <label class="control-label">Tree Address</label>
             <div class="controls">
-              <input class="treeaddress" name="treeaddress" type="text" value=""/>
+              <input type="hidden" class="treeaddress" name="treeaddress" value=""/>
+              <span class="treeaddress input uneditable-input"></span>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label">Tree Type</label>
             <div class="controls">
-              <input class="treetype" name="treetype" type="text" value=""/>
+              <input type="hidden" class="treetype" name="treetype" value=""/>
+              <span class="treetype input uneditable-input"></span>
             </div>
           </div>
-          <h4>Committment</h3>
+          <h4>Commitment</h3>
           <p>I commit to...</p>
-          <input type="checkbox" name="commit"/>
+          <input type="checkbox" class="commit"/>
           <h4>Disclaimer</h3>
           <p>The City of Boston retains the right to...</p>
-          <input type="checkbox" name="disclaimer"/>
+          <input type="checkbox" class="disclaimer"/>
         </form>
         <hr/>
         <button class="btn btn-primary pull-right" onclick="makeAdopt()">Adopt</button>

@@ -4,6 +4,8 @@ if(typeof console == "undefined" || !console || typeof console.log != "function"
   };
 }
 
+var treeaddress, treetype;
+
 var map = new google.maps.Map(document.getElementById("map"), {
   center: new google.maps.LatLng( 42.323206, -71.074847 ),
   zoom: 11,
@@ -29,10 +31,13 @@ google.maps.event.addListener(ft, "click", function(e){
   document.getElementById("adoptme").onclick = function(){
     //var id = e.row["TIS #/ SOURCE"].value;
     //window.location = "form.html?id=" + id;
+    treeaddress = e.row["Address"].value;
+    treetype = e.row["Common Name"].value;
+    adoptWindow();
   };
   
   var content = "<h3>" + e.row["Common Name"].value + "</h3>";
-  content += "<i>" + e.row["Latin Name"].value + "</i><br/>";
+  content += "<i>" + latinify(e.row["Latin Name"].value) + "</i><br/>";
   content += "<div>Planted " + e.row["Birthdate"].value + " at ";
   content += "<span class='address'>" + e.row["Address"].value.toLowerCase() + ".</span><br/>" + e.row["Neighborhood"].value + "<br/>This tree is ";
   var age = getAge( e.row );
@@ -160,4 +165,25 @@ function getAge(tree){
     age = Math.floor(age / (365 * 24 * 60 * 60 * 1000));
   }
   return age;
+}
+
+function latinify(name){
+  name = name[0].toUpperCase() + name.substring(1).toLowerCase();
+  return name;
+}
+
+function adoptWindow(){
+  TINY.box.show({html: document.getElementById("adoptformtemp").innerHTML ,animate:true,close:true,boxid:'adoptform',top:5});
+  setTimeout(function(){
+    for(var i=0;i<document.getElementsByClassName("treeaddress").length;i++){
+      document.getElementsByClassName("treeaddress")[i].value = treeaddress;
+      document.getElementsByClassName("treetype")[i].value = treetype;
+    }
+  }, 500);
+}
+function cancelWindow(){
+  TINY.box.hide();
+}
+function makeAdopt(){
+
 }

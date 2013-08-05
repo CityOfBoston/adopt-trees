@@ -87,3 +87,25 @@ a{
 .address{
   text-transform: capitalize;
 }
+
+#adoptformtemp{
+  display: none;
+}
+
+.form-container{
+  background-color: #fff;
+  padding: 10px;
+  border: 2px solid #000;
+}
+
+.form-container button{
+  margin-left: 8px;
+}
+
+.form-horizontal .control-label{
+  width: 100px;
+}
+
+.form-horizontal .controls{
+  margin-left: 106px;
+}

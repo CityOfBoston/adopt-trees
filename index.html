@@ -5,7 +5,7 @@
     <title>Adopt-a-Tree</title>
     <link href="bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic' rel='stylesheet' type='text/css'/>
-    <link href="style.css?v=2" rel="stylesheet" type="text/css"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
   </head>
   <body class="greenovate-green">
     <div class="container">
@@ -61,7 +61,8 @@
           <div id="map">
           </div>
           <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-          <script type="text/javascript" src="app.js?v=2"></script>
+          <script type="text/javascript" src="tinybox2.js"></script>
+          <script type="text/javascript" src="app.js"></script>
           <br/>
           <button id="adoptme" class="btn btn-success greenovate-green disabled" disabled="disabled">Adopt your tree!</button>
           <br/>
@@ -104,6 +105,54 @@
           </ul>
           <a href="#">Join a StreetCred Campaign</a>
         </div>
+      </div>
+    </div>
+    <div id="adoptformtemp">
+      <div class="form-container">
+        <form class="form-horizontal" action="/adopt" method="POST">
+          <h4>Your Information</h3>
+          <div class="control-group">
+            <label class="control-label">Your Name</label>
+            <div class="controls">
+              <input name="yourname" type="text" value=""/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Email</label>
+            <div class="controls">
+              <input name="email" type="text" value=""/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Address</label>
+            <div class="controls">
+              <input name="address" type="text" value=""/>
+            </div>
+          </div>
+          <h4>Tree Information</h3>
+          <div class="control-group">
+            <label class="control-label">Tree Address</label>
+            <div class="controls">
+              <input class="treeaddress" name="treeaddress" type="text" value=""/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Tree Type</label>
+            <div class="controls">
+              <input class="treetype" name="treetype" type="text" value=""/>
+            </div>
+          </div>
+          <h4>Committment</h3>
+          <p>I commit to...</p>
+          <input type="checkbox" name="commit"/>
+          <h4>Disclaimer</h3>
+          <p>The City of Boston retains the right to...</p>
+          <input type="checkbox" name="disclaimer"/>
+        </form>
+        <hr/>
+        <button class="btn btn-primary pull-right" onclick="makeAdopt()">Adopt</button>
+        <button class="btn pull-right" onclick="cancelWindow()">Cancel</button>
+        <div style="clear:both;"></div>
       </div>
     </div>
   </body>

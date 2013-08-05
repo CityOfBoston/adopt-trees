@@ -8,6 +8,8 @@ An app to learn how to care for young trees in your neighborhood.
 
 * Google Maps API
 * Google Fusion Tables
+* Bootstrap 2.X
+* TinyBox
 * GitHub Pages
 
 ## Todo

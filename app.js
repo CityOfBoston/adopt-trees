@@ -4,7 +4,7 @@ if(typeof console == "undefined" || !console || typeof console.log != "function"
   };
 }
 
-var treeaddress, treetype;
+var treeaddress, treetype, latin, bday;
 
 var map = new google.maps.Map(document.getElementById("map"), {
   center: new google.maps.LatLng( 42.323206, -71.074847 ),
@@ -24,17 +24,6 @@ google.maps.event.addListener(ft, "click", function(e){
     map.setCenter(e.latLng);
     map.setZoom(16);
   }
-
-  // enable adopt button
-  document.getElementById("adoptme").className = "btn btn-success greenovate-green";
-  document.getElementById("adoptme").disabled = "";
-  document.getElementById("adoptme").onclick = function(){
-    //var id = e.row["TIS #/ SOURCE"].value;
-    //window.location = "form.html?id=" + id;
-    treeaddress = e.row["Address"].value;
-    treetype = e.row["Common Name"].value;
-    adoptWindow();
-  };
   
   var content = "<h3>" + e.row["Common Name"].value + "</h3>";
   content += "<i>" + latinify(e.row["Latin Name"].value) + "</i><br/>";
@@ -51,6 +40,20 @@ google.maps.event.addListener(ft, "click", function(e){
   infoWindow.setContent(content);
   infoWindow.setPosition(e.latLng);
   infoWindow.open(map);
+
+  // enable adopt button
+  document.getElementById("adoptme").className = "btn btn-success greenovate-green";
+  document.getElementById("adoptme").disabled = "";
+  document.getElementById("adoptme").onclick = function(){
+    //var id = e.row["TIS #/ SOURCE"].value;
+    //window.location = "form.html?id=" + id;
+    treeaddress = e.row["Address"].value;
+    treetype = e.row["Common Name"].value;
+    latin = latinify(e.row["Latin Name"].value);
+    bday = e.row["Birthdate"].value;
+    adoptWindow();
+  };
+
 });
 
 var searchbar = document.createElement("div");
@@ -58,6 +61,7 @@ searchbar.id = "searchbar";
 
 var address = document.createElement("input");
 address.id = "address";
+address.placeholder = "Address";
 address.className = "x-large";
 address.type = "text";
 address.onkeydown = function(e){
@@ -179,10 +183,14 @@ function adoptWindow(){
       if(typeof document.getElementsByClassName("treeaddress")[i].value != "undefined"){
         document.getElementsByClassName("treeaddress")[i].value = treeaddress;
         document.getElementsByClassName("treetype")[i].value = treetype;
+        document.getElementsByClassName("latin")[i].value = latin;
+        document.getElementsByClassName("bday")[i].value = bday;
       }
       else{
         document.getElementsByClassName("treeaddress")[i].innerHTML = treeaddress;
         document.getElementsByClassName("treetype")[i].innerHTML = treetype;
+        document.getElementsByClassName("latin")[i].innerHTML = latin;
+        document.getElementsByClassName("bday")[i].innerHTML = bday;
       }
     }
   }, 500);
@@ -191,7 +199,7 @@ function cancelWindow(){
   TINY.box.hide();
 }
 function makeAdopt(){
-  if(document.getElementsByClassName("commit")[1].checked && document.getElementsByClassName("disclaimer")[1].checked){
+  if(document.getElementsByClassName("commit")[1].checked){
     document.getElementsByTagName("form")[1].submit();
   }
   else{

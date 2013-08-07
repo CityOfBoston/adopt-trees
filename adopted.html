@@ -78,6 +78,7 @@ function replaceAll(src, oldr, newr){
   return src;
 }
 var treeaddress = replaceAll(gup("address"), "%20", " ");
+treeaddress = replaceAll(treeaddress, "\\", "");
 if(typeof document.getElementById("treeaddress").innerText != "undefined"){
   document.getElementById("treeaddress").innerText = treeaddress;
 }
@@ -86,6 +87,7 @@ else{
 }
 var treetype = gup("type");
 var latin = replaceAll(gup("latin"), "%20", " ");
+latin = replaceAll(latin, "\\", "");
 if(typeof document.getElementById("latin").innerText != "undefined"){
   document.getElementById("latin").innerText = latin;
 }

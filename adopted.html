@@ -14,11 +14,12 @@
         <p>Thank you for adopting a street tree! With your help, this young tree will thrive in its new urban environment.</p>
         
         <h3>Tree Adoption:</h3>
-        <p>Remember to water your new tree at <span class="treeaddress"></span>.</p>
-        <p>Learn more about your <span class="latin"></span> tree at <a href="http://www.hort.uconn.edu/plants/index.html" target="_blank">http://www.hort.uconn.edu/plants/index.html</a>.</p>
+        <p>Remember to water your new tree at <span id="treeaddress"></span>.</p>
+        <p>Learn more about your <span id="latin"></span> tree at <a href="http://www.hort.uconn.edu/plants/index.html" target="_blank">http://www.hort.uconn.edu/plants/index.html</a>.</p>
         
         <h3>Adoption Sign:</h3>
         <p>You can pick up your Tree Adoption Sign at any of the following ambassador organizations:
+          <br/><br/>
           <strong>Boston Natural Areas Network</strong>
           <br/>
           <a href="http://www.bostonnatural.org/index.htm">http://www.bostonnatural.org/index.htm</a>
@@ -68,5 +69,25 @@
         <a class="btn btn-success" href="http://cityofboston.github.io/adopt-trees/">Return to Website</a>
       </div>
     </div>
+    <script type="text/javascript">
+function gup(nm){nm=nm.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var rxS="[\\?&]"+nm+"=([^&#]*)";var rx=new RegExp(rxS);var rs=rx.exec(window.location.href);if(!rs){return null;}else{return rs[1];}}
+var treeaddress = gup("address");
+if(typeof document.getElementById("treeaddress").innerText != "undefined"){
+  document.getElementById("treeaddress").innerText = treeaddress;
+}
+else{
+  document.getElementById("treeaddress").textContent = treeaddress;
+}
+var treetype = gup("type");
+var latin = gup("latin");
+if(typeof document.getElementById("latin").innerText != "undefined"){
+  document.getElementById("latin").innerText = latin;
+}
+else{
+  document.getElementById("latin").textContent = latin;
+}
+var rowid = gup("rowid");
+
+    </script>
   </body>
 </html>

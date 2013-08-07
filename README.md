@@ -12,6 +12,6 @@ An app to learn how to care for young trees in your neighborhood.
 * TinyBox
 * GitHub Pages
 
-## Todo
+# Server
 
-Server-side scripts to collect user information and congratulate users on their trees' birthdays!
+A server on <a href="https://github.com/cityofboston/adopt-trees/tree/master">this repo's master branch</a> collects user's subscriptions and updates Google Fusion Tables.

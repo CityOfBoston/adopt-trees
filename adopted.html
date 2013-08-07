@@ -15,7 +15,7 @@
         
         <h3>Tree Adoption:</h3>
         <p>Remember to water your new tree at <span id="treeaddress"></span>.</p>
-        <p>Learn more about your <span id="latin"></span> tree at <a href="http://www.hort.uconn.edu/plants/index.html" target="_blank">http://www.hort.uconn.edu/plants/index.html</a>.</p>
+        <p>Learn more about your <i><span class="latin" id="latin"></span></i> tree at <a href="http://www.hort.uconn.edu/plants/index.html" target="_blank">http://www.hort.uconn.edu/plants/index.html</a>.</p>
         
         <h3>Adoption Sign:</h3>
         <p>You can pick up your Tree Adoption Sign at any of the following ambassador organizations:
@@ -71,7 +71,13 @@
     </div>
     <script type="text/javascript">
 function gup(nm){nm=nm.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var rxS="[\\?&]"+nm+"=([^&#]*)";var rx=new RegExp(rxS);var rs=rx.exec(window.location.href);if(!rs){return null;}else{return rs[1];}}
-var treeaddress = gup("address");
+function replaceAll(src, oldr, newr){
+  while(src.indexOf(oldr) > -1){
+    src = src.replace(oldr, newr);
+  }
+  return src;
+}
+var treeaddress = replaceAll(gup("address"), "%20", " ");
 if(typeof document.getElementById("treeaddress").innerText != "undefined"){
   document.getElementById("treeaddress").innerText = treeaddress;
 }
@@ -79,7 +85,7 @@ else{
   document.getElementById("treeaddress").textContent = treeaddress;
 }
 var treetype = gup("type");
-var latin = gup("latin");
+var latin = replaceAll(gup("latin"), "%20", " ");
 if(typeof document.getElementById("latin").innerText != "undefined"){
   document.getElementById("latin").innerText = latin;
 }
@@ -87,7 +93,6 @@ else{
   document.getElementById("latin").textContent = latin;
 }
 var rowid = gup("rowid");
-
     </script>
   </body>
 </html>

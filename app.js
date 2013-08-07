@@ -37,6 +37,9 @@ google.maps.event.addListener(ft, "click", function(e){
     content += age + " years old.";
   }
   content += "</div>";
+  if(e.row["Adopted"].value == 1){
+    content += "<div class='adopted greenovate-cyan'>Adopted</div>";
+  }
   infoWindow.setContent(content);
   infoWindow.setPosition(e.latLng);
   infoWindow.open(map);

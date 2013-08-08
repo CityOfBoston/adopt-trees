@@ -15,7 +15,7 @@ var map = new google.maps.Map(document.getElementById("map"), {
 
 var geocoder = new google.maps.Geocoder();
 
-var ft = new google.maps.FusionTablesLayer({map:map,suppressInfoWindows:true,query:{select:"'Geocodable address'",from:"18amWr6Z69048wr2b5B-W1Cmc2Thiu9Tj5-xvy8k"},styles:[{markerOptions:{iconName:"small_green"}},{markerOptions:{iconName:"small_red"},where:"Adopted=1"}]});
+var ft = new google.maps.FusionTablesLayer({map:map,suppressInfoWindows:true,query:{select:"'Geocodable address'",from:"18amWr6Z69048wr2b5B-W1Cmc2Thiu9Tj5-xvy8k"},styles:[{markerOptions:{iconName:"small_green"}},{markerOptions:{iconName:"small_blue"},where:"Adopted=1"}]});
 var infoWindow = new google.maps.InfoWindow();
 google.maps.event.addListener(ft, "click", function(e){
   console.log(e.row);

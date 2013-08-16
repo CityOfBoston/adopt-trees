@@ -185,15 +185,27 @@ function adoptWindow(){
     for(var i=0;i<document.getElementsByClassName("treeaddress").length;i++){
       if(typeof document.getElementsByClassName("treeaddress")[i].value != "undefined"){
         document.getElementsByClassName("treeaddress")[i].value = treeaddress;
-        document.getElementsByClassName("treetype")[i].value = treetype;
-        document.getElementsByClassName("latin")[i].value = latin;
-        document.getElementsByClassName("bday")[i].value = bday;
       }
       else{
-        document.getElementsByClassName("treeaddress")[i].innerHTML = treeaddress;
-        document.getElementsByClassName("treetype")[i].innerHTML = treetype;
-        document.getElementsByClassName("latin")[i].innerHTML = latin;
-        document.getElementsByClassName("bday")[i].innerHTML = bday;
+        document.getElementsByClassName("treetype")[i].innerHTML = treeaddress;
+      }
+      if(typeof document.getElementsByClassName("treetype")[i].value != "undefined"){
+        document.getElementsByClassName("treetype")[i].value = treeaddress;
+      }
+      else{
+        document.getElementsByClassName("treetype")[i].innerHTML = treeaddress;
+      }
+      if(typeof document.getElementsByClassName("latin")[i].value != "undefined"){
+        document.getElementsByClassName("latin")[i].value = treeaddress;
+      }
+      else{
+        document.getElementsByClassName("latin")[i].innerHTML = treeaddress;
+      }
+      if(typeof document.getElementsByClassName("bday")[i].value != "undefined"){
+        document.getElementsByClassName("bday")[i].value = treeaddress;
+      }
+      else{
+        document.getElementsByClassName("bday")[i].innerHTML = treeaddress;
       }
     }
   }, 500);

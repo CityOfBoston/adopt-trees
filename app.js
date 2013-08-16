@@ -18,7 +18,7 @@ var geocoder = new google.maps.Geocoder();
 var ft = new google.maps.FusionTablesLayer({map:map,suppressInfoWindows:true,query:{select:"'Geocodable address'",from:"18amWr6Z69048wr2b5B-W1Cmc2Thiu9Tj5-xvy8k"},styles:[{markerOptions:{iconName:"small_green"}},{markerOptions:{iconName:"small_blue"},where:"Adopted=1"}]});
 var infoWindow = new google.maps.InfoWindow();
 google.maps.event.addListener(ft, "click", function(e){
-  console.log(e.row);
+  //console.log(e.row);
 
   if(map.getZoom() < 16){
     map.setCenter(e.latLng);
@@ -189,23 +189,29 @@ function adoptWindow(){
       else{
         document.getElementsByClassName("treetype")[i].innerHTML = treeaddress;
       }
-      if(typeof document.getElementsByClassName("treetype")[i].value != "undefined"){
-        document.getElementsByClassName("treetype")[i].value = treetype;
+      if(typeof document.getElementsByClassName("treetype")[i] != "undefined"){
+        if(typeof document.getElementsByClassName("treetype")[i].value != "undefined"){
+          document.getElementsByClassName("treetype")[i].value = treetype;
+        }
+        else{
+          document.getElementsByClassName("treetype")[i].innerHTML = treetype;
+        }
       }
-      else{
-        document.getElementsByClassName("treetype")[i].innerHTML = treetype;
+      if(typeof document.getElementsByClassName("latin")[i] != "undefined"){
+        if(typeof document.getElementsByClassName("latin")[i].value != "undefined"){
+          document.getElementsByClassName("latin")[i].value = latin;
+        }
+        else{
+          document.getElementsByClassName("latin")[i].innerHTML = latin;
+        }
       }
-      if(typeof document.getElementsByClassName("latin")[i].value != "undefined"){
-        document.getElementsByClassName("latin")[i].value = latin;
-      }
-      else{
-        document.getElementsByClassName("latin")[i].innerHTML = latin;
-      }
-      if(typeof document.getElementsByClassName("bday")[i].value != "undefined"){
-        document.getElementsByClassName("bday")[i].value = bday;
-      }
-      else{
-        document.getElementsByClassName("bday")[i].innerHTML = bday;
+      if(typeof document.getElementsByClassName("bday")[i] != "undefined"){
+        if(typeof document.getElementsByClassName("bday")[i].value != "undefined"){
+          document.getElementsByClassName("bday")[i].value = bday;
+        }
+        else{
+          document.getElementsByClassName("bday")[i].innerHTML = bday;
+        }
       }
     }
   }, 500);

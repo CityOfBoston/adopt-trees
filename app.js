@@ -190,22 +190,22 @@ function adoptWindow(){
         document.getElementsByClassName("treetype")[i].innerHTML = treeaddress;
       }
       if(typeof document.getElementsByClassName("treetype")[i].value != "undefined"){
-        document.getElementsByClassName("treetype")[i].value = treeaddress;
+        document.getElementsByClassName("treetype")[i].value = treetype;
       }
       else{
-        document.getElementsByClassName("treetype")[i].innerHTML = treeaddress;
+        document.getElementsByClassName("treetype")[i].innerHTML = treetype;
       }
       if(typeof document.getElementsByClassName("latin")[i].value != "undefined"){
-        document.getElementsByClassName("latin")[i].value = treeaddress;
+        document.getElementsByClassName("latin")[i].value = latin;
       }
       else{
-        document.getElementsByClassName("latin")[i].innerHTML = treeaddress;
+        document.getElementsByClassName("latin")[i].innerHTML = latin;
       }
       if(typeof document.getElementsByClassName("bday")[i].value != "undefined"){
-        document.getElementsByClassName("bday")[i].value = treeaddress;
+        document.getElementsByClassName("bday")[i].value = bday;
       }
       else{
-        document.getElementsByClassName("bday")[i].innerHTML = treeaddress;
+        document.getElementsByClassName("bday")[i].innerHTML = bday;
       }
     }
   }, 500);

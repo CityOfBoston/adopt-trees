@@ -5,7 +5,7 @@
     <title>Adopt-a-Tree</title>
     <link href="bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic' rel='stylesheet' type='text/css'/>
-    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="style.css?v=2" rel="stylesheet" type="text/css"/>
   </head>
   <body class="greenovate-green">
     <div class="container">
@@ -102,7 +102,7 @@
           <i>This map includes City of Boston tree plantings from 2008-present.</i>
           <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
           <script type="text/javascript" src="tinybox2.js"></script>
-          <script type="text/javascript" src="app.js?v=4"></script>
+          <script type="text/javascript" src="app.js?v=5"></script>
           <br/>
           <button id="adoptme" class="btn btn-success greenovate-green disabled" onclick="alert('Select a tree on the map first!')">Adopt Your Tree!</button>
           <br/>
@@ -152,7 +152,7 @@
     </div>
     <div id="adoptformtemp">
       <div class="form-container">
-        <h4>Adopt a Tree - <span class="treetype"></span> @ <span class="treeaddress"></span></h4>
+        <h4>Adopt a Tree - <span class="treetype"></span> @ <span class="treeaddress capitalized"></span></h4>
         <p>Thank you for your interest in caring for a young street tree. With your help this young tree will thrive in its new urban environment.</p>
         <form class="form-horizontal" action="http://adoptatree.herokuapp.com/add.php" method="POST">
           <h4>Your Information</h3>

@@ -187,7 +187,7 @@ function adoptWindow(){
         document.getElementsByClassName("treeaddress")[i].value = treeaddress;
       }
       else{
-        document.getElementsByClassName("treetype")[i].innerHTML = treeaddress;
+        document.getElementsByClassName("treeaddress")[i].textContent = treeaddress;
       }
       if(typeof document.getElementsByClassName("treetype")[i] != "undefined"){
         if(typeof document.getElementsByClassName("treetype")[i].value != "undefined"){

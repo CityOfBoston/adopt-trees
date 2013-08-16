@@ -108,3 +108,7 @@ a{
   text-align: center;
   width: 100px;
 }
+
+.capitalized{
+  text-transform: capitalize;
+}

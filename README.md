@@ -8,6 +8,7 @@ An app to learn how to care for young trees in your neighborhood.
 
 * Google Maps API
 * Google Fusion Tables
+* Mandrill from MailChimp
 * Bootstrap 2.X
 * TinyBox
 * GitHub Pages
@@ -27,6 +28,18 @@ An app to learn how to care for young trees in your neighborhood.
         (paste in the contents of maketable.php to create the table)
         (use \q to quit)
         (if you ever need to start over, run DROP TABLE subscriptions; and then this script again)
+
+# Configuring Mandrill
+
+* In the command line, run:
+
+        heroku addons:add mandrill:sandbox
+
+* Go to the Heroku App Dashboard, view the app, and open up the Mandrill add-on. You will be asked for some information about your service.
+
+* Choose to set up Mandrill with API access, and copy the API key from the bottom of the page.
+
+* Go to https://mandrillapp.com/templates and create a Welcome template (named Welcome)
 
 
 # Configuring Fusion Tables
@@ -50,6 +63,7 @@ An app to learn how to care for young trees in your neighborhood.
         clientid=CLIENT_ID
         email=EMAIL_ADDRESS
         tableid=FUSION_TABLE_ID
+        emailapi=MANDRILL_API_KEY
 
 * Add the custom OAuth2 e-mail as a collaborator with Edit access on your Fusion table
 

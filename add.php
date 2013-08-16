@@ -1,6 +1,7 @@
 <?php
 require_once 'google-api-php-client/src/Google_Client.php';
 require_once 'google-api-php-client/src/contrib/Google_FusiontablesService.php';
+require_once 'Mandrill.php';
 
 function pg_connection_string_from_database_url() {
   extract(parse_url($_ENV["HEROKU_POSTGRESQL_CRIMSON_URL"]));
@@ -78,20 +79,44 @@ else{
   
   $service = new Google_FusiontablesService($client);
   $updateQuery = "UPDATE " . $_ENV['tableid'] . " SET Adopted=1 WHERE ROWID='" . $rowid . "'";
-  
   $service->query->sql($updateQuery);
+
+  if($rowid != ""){
+    $emailapi = $_ENV["emailapi"];
+
+    $mandrill = new Mandrill($emailapi);
+
+    $message = array(
+      'subject' => 'You Adopted a Tree!',
+      'from_email' => 'info@greenovateboston.org',
+      'html' => '<p>Congratulations, you adopted a tree!</p><p>Your tree lives at ' . $treeaddress . '.</p>',
+      'to' => array(array('email' => $email, 'name' => $yourname)),
+      'merge_vars' => array(array(
+          'rcpt' => $email,
+          'vars' =>
+          array(
+              array(
+                'name' => 'YOURNAME',
+                'content' => $yourname)
+          ))));
+
+    $template_name = 'Welcome';
+
+    $template_content = array(
+        array(
+          'name' => 'main',
+          'content' => 'Hi *|YOURNAME|*, thanks for signing up.'),
+        array(
+          'name' => 'footer',
+          'content' => 'Copyright 2012.')
+
+    );
+
+    $mandrill->messages->sendTemplate($template_name, $template_content, $message);
+  }
   
   header( 'Location: http://cityofboston.github.io/adopt-trees/adopted.html?address=' . $treeaddress . '&type=' . $treetype . '&latin=' . $latin . '&rowid=' . $rowid );
-  
-  /*
-  echo "<p>" . $updateQuery . "</p>--";
-  try{
-    echo $service->query->sql($updateQuery);
-  }
-  catch(Exception $e){
-    echo $e->getMessage();
-  }
-  */
+
   exit;
 }
 

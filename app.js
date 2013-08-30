@@ -229,6 +229,13 @@ function addTreeMarker(){
     draggable: true,
     position: map.getCenter()
   });
+  google.maps.event.addListener(treemarker, "dragend", function(e){
+    infowindow.close();
+  });
+  google.maps.event.addListener(treemarker, "dragend", function(e){
+    infowindow.setContent('<h4>Tree Type</h4><input id="inputtype" type="text" value=""/><br/><button class="btn btn-primary pull-right" onclick="openAdopt()">Adopt</button>');
+    infowindow.open(map, treemarker);
+  });
   google.maps.event.addListener(treemarker, "click", function(e){
     infowindow.setContent('<h4>Tree Type</h4><input id="inputtype" type="text" value=""/><br/><button class="btn btn-primary pull-right" onclick="openAdopt()">Adopt</button>');
     infowindow.open(map, treemarker);

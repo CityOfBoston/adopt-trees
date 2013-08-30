@@ -25,6 +25,7 @@ $treetype = parseInput($_POST['treetype']);
 $latin = str_replace('\'', '\\\'', $_POST['latin']);
 
 $bday = parseInput($_POST['bday']);
+$newtree = parseInput($_POST['newtree']);
 
 # Establish connection
 $pg_conn = pg_connect(pg_connection_string_from_database_url());
@@ -36,6 +37,58 @@ if (!$result) {
   die("Error in SQL query: " . pg_last_error());
 }
 else{
+  if($newtree == "new"){
+    session_start();
+
+    $key = file_get_contents('/app/www/privatekey.p12');
+
+    $client = new Google_Client();
+    $client->setApplicationName($_ENV["appname"]);
+    $client->setClientId($_ENV["clientid"]);
+    $client->setAssertionCredentials(new Google_AssertionCredentials(
+      $_ENV["email"],
+      array("https://www.googleapis.com/auth/fusiontables"),
+      $key
+    ));
+  
+    $service = new Google_FusiontablesService($client);
+    $insertQuery = "INSERT INTO " . $_ENV['tableid'] . " ( Adopted, Address, 'Latin Name', Birthdate, 'Common Name' ) VALUES ( 1, '$treeaddress', '$latin', '$bday', '$latin' )";
+    $service->query->sql($insertQuery);
+
+    $emailapi = $_ENV["emailapi"];
+
+    $mandrill = new Mandrill($emailapi);
+
+    $message = array(
+      'subject' => 'You Adopted a Tree!',
+      'from_email' => 'info@greenovateboston.org',
+      'html' => '<p>Congratulations, you adopted a tree!</p><p>Your tree lives at ' . $treeaddress . '.</p>',
+      'to' => array(array('email' => $email, 'name' => $yourname)),
+      'merge_vars' => array(array(
+          'rcpt' => $email,
+          'vars' =>
+          array(
+              array(
+                'name' => 'YOURNAME',
+                'content' => $yourname)
+          ))));
+
+    $template_name = 'Welcome';
+
+    $template_content = array(
+        array(
+          'name' => 'main',
+          'content' => 'Hi *|YOURNAME|*, thanks for signing up.'),
+        array(
+          'name' => 'footer',
+          'content' => 'Copyright 2013.')
+
+    );
+
+    $mandrill->messages->sendTemplate($template_name, $template_content, $message);
+    header( 'Location: http://cityofboston.github.io/adopt-trees/adopted.html?address=' . $treeaddress . '&type=' . $treetype . '&latin=' . $latin . '&rowid=' . $rowid );
+    exit;
+  }
   $url = 'https://www.googleapis.com/fusiontables/v1/query';
   $fields = array(
     'key' => $_ENV['apikey'],
@@ -108,7 +161,7 @@ else{
           'content' => 'Hi *|YOURNAME|*, thanks for signing up.'),
         array(
           'name' => 'footer',
-          'content' => 'Copyright 2012.')
+          'content' => 'Copyright 2013.')
 
     );
 

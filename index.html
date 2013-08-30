@@ -102,9 +102,10 @@
           <i>This map includes City of Boston tree plantings from 2008-present.</i>
           <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
           <script type="text/javascript" src="tinybox2.js"></script>
-          <script type="text/javascript" src="app.js?v=5"></script>
+          <script type="text/javascript" src="app.js?v=6"></script>
           <br/>
           <button id="adoptme" class="btn btn-success greenovate-green disabled" onclick="alert('Select a tree on the map first!')">Adopt Your Tree!</button>
+          <button class="btn btn-success greenovate-green" onclick="addTreeMarker()">Add New Tree</button>
           <br/>
           <p><em>Request a Tree!</em> Check that the location meets the
           <a href="http://www.cityofboston.gov/Parks/StreetTrees/seasonal.asp" target="_blank">street tree requirements</a>
@@ -183,6 +184,7 @@
           <div style="display:none;">
           <h4>Tree Information</h3>
           <div class="control-group">
+            <input type="hidden" class="newtree" name="newtree" value=""/>
             <input type="hidden" class="treeaddress" name="treeaddress" value=""/>
             <span class="treeaddress input uneditable-input"></span>
             <br/>

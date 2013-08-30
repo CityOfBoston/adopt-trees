@@ -4,7 +4,7 @@ if(typeof console == "undefined" || !console || typeof console.log != "function"
   };
 }
 
-var treeaddress, treetype, latin, bday;
+var treeaddress, treetype, latin, bday, treemarker, newtree;
 
 var map = new google.maps.Map(document.getElementById("map"), {
   center: new google.maps.LatLng( 42.323206, -71.074847 ),
@@ -12,14 +12,13 @@ var map = new google.maps.Map(document.getElementById("map"), {
   mapTypeId: google.maps.MapTypeId.ROADMAP,
   streetViewControl: false
 });
+var infowindow = new google.maps.InfoWindow();
 
 var geocoder = new google.maps.Geocoder();
 
 var ft = new google.maps.FusionTablesLayer({map:map,suppressInfoWindows:true,query:{select:"'Geocodable address'",from:"18amWr6Z69048wr2b5B-W1Cmc2Thiu9Tj5-xvy8k"},styles:[{markerOptions:{iconName:"small_green"}},{markerOptions:{iconName:"small_blue"},where:"Adopted=1"}]});
 var infoWindow = new google.maps.InfoWindow();
 google.maps.event.addListener(ft, "click", function(e){
-  //console.log(e.row);
-
   if(map.getZoom() < 16){
     map.setCenter(e.latLng);
     map.setZoom(16);
@@ -48,8 +47,6 @@ google.maps.event.addListener(ft, "click", function(e){
   document.getElementById("adoptme").className = "btn btn-success greenovate-green";
   document.getElementById("adoptme").disabled = "";
   document.getElementById("adoptme").onclick = function(){
-    //var id = e.row["TIS #/ SOURCE"].value;
-    //window.location = "form.html?id=" + id;
     treeaddress = e.row["Address"].value;
     treetype = e.row["Common Name"].value;
     latin = latinify(e.row["Latin Name"].value);
@@ -182,6 +179,9 @@ function latinify(name){
 function adoptWindow(){
   TINY.box.show({html: document.getElementById("adoptformtemp").innerHTML ,animate:true,close:true,boxid:'adoptform',top:5});
   setTimeout(function(){
+    if(newtree){
+      document.getElementsByClassName("newtree")[1].value = "new";
+    }
     for(var i=0;i<document.getElementsByClassName("treeaddress").length;i++){
       if(typeof document.getElementsByClassName("treeaddress")[i].value != "undefined"){
         document.getElementsByClassName("treeaddress")[i].value = treeaddress;
@@ -218,6 +218,30 @@ function adoptWindow(){
 }
 function cancelWindow(){
   TINY.box.hide();
+  newtree = false;
+}
+function addTreeMarker(){
+  if(typeof treemarker != "undefined" && treemarker){
+    treemarker.setMap(null);
+  }
+  treemarker = new google.maps.Marker({
+    map: map,
+    draggable: true,
+    position: map.getCenter()
+  });
+  google.maps.event.addListener(treemarker, "click", function(e){
+    infowindow.setContent('<h4>Tree Type</h4><input id="inputtype" type="text" value=""/><br/><button class="btn btn-primary pull-right" onclick="openAdopt()">Adopt</button>');
+    infowindow.open(map, treemarker);
+  });
+}
+function openAdopt(){
+  treeaddress = treemarker.getPosition().lat().toFixed(6) + "," + treemarker.getPosition().lng().toFixed(6);
+  treetype = document.getElementById("inputtype").value;
+  latin = treetype;
+  var today = new Date();
+  bday = (today.getMonth()+1) + "/" + today.getDate() + "/" + today.getFullYear();
+  newtree = true;
+  adoptWindow();
 }
 function makeAdopt(){
   if(document.getElementsByClassName("commit")[1].checked){

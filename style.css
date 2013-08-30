@@ -31,7 +31,6 @@ body{
 .logo{
   max-width:180px;
 }
-
 .greenovate-green{
   background: rgb( 161, 179, 27 );
 }
@@ -46,11 +45,9 @@ body{
 .greenovate-yellow{
   background: rgb( 255, 209, 0 );
 }
-
 a{
   color: rgb( 77, 158, 235 );
 }
-
 .btn-success .greenovate-green{
   color: #ffffff;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
@@ -67,7 +64,6 @@ a{
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff99c000', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
-
 .btn .greenovate-green:hover,
 .btn .greenovate-green:focus,
 .btn .greenovate-green:active,
@@ -78,37 +74,30 @@ a{
   background-color: #99c000;
   *background-color: #99c000;
 }
-
 .btn .greenovate-green:active,
 .btn .greenovate-green.active {
   background-color: #99c000 \9;
 }
-
 .address{
   text-transform: capitalize;
 }
-
-#adoptformtemp{
+#adoptformtemp, #addformtemp{
   display: none;
 }
-
 .form-container{
   background-color: #fff;
   padding: 10px;
   border: 2px solid #000;
   z-index: 999;
 }
-
 .form-container button{
   margin-left: 8px;
 }
-
 .adopted{
   padding: 5px;
   text-align: center;
   width: 100px;
 }
-
 .capitalized{
   text-transform: capitalize;
 }

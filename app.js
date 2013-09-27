@@ -24,7 +24,12 @@ google.maps.event.addListener(ft, "click", function(e){
     map.setZoom(16);
   }
   
-  var content = "<h3>" + e.row["Common Name"].value + "</h3>";
+  var headline = e.row["Common Name"].value;
+  if(headline == "No Data"){
+    // for user submitted trees
+    headline = "Street Tree";
+  }
+  var content = "<h3>" + headline + "</h3>";
   content += "<i>" + latinify(e.row["Latin Name"].value) + "</i><br/>";
   content += "<div>Planted " + e.row["Birthdate"].value + " at ";
   content += "<span class='address'>" + e.row["Address"].value.toLowerCase() + ".</span><br/>" + e.row["Neighborhood"].value + "<br/>This tree is ";

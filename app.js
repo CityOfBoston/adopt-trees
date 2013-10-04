@@ -42,7 +42,11 @@ google.maps.event.addListener(ft, "click", function(e){
   }
   content += "</div>";
   if(e.row["Adopted"].value == 1){
-    content += "<div class='adopted greenovate-cyan'>Adopted</div>";
+    var adoptphrase = "Adopted";
+    if(e.row["SignName"].value && e.row["SignName"].value.length){
+      adoptphrase += " by " + e.row["SignName"].value;
+    }
+    content += "<div class='adopted greenovate-cyan'>" + adoptphrase + "</div>";
   }
   infoWindow.setContent(content);
   infoWindow.setPosition(e.latLng);

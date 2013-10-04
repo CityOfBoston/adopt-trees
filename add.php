@@ -131,7 +131,7 @@ else{
   ));
   
   $service = new Google_FusiontablesService($client);
-  $updateQuery = "UPDATE " . $_ENV['tableid'] . " SET Adopted=1 WHERE ROWID='" . $rowid . "'";
+  $updateQuery = "UPDATE " . $_ENV['tableid'] . " SET Adopted=1, SignName='$signname' WHERE ROWID='" . $rowid . "'";
   $service->query->sql($updateQuery);
 
   if($rowid != ""){

@@ -90,6 +90,7 @@ else{
     exit;
   }
   $url = 'https://www.googleapis.com/fusiontables/v1/query';
+  $treeaddress = str_replace("&", "%26", $treeaddress);
   $fields = array(
     'key' => $_ENV['apikey'],
     'sql' => 'SELECT ROWID from ' . $_ENV['tableid'] . ' WHERE Address=\'' . $treeaddress . '\' AND \'Latin Name\'=\'' . $latin . '\''
